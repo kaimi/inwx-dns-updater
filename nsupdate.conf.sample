@@ -5,7 +5,7 @@
 # the hostname to query via dns
 hostname=hostname.to.check.tld
 # dns entry entity ids; see README
-entity_id=(111111111)
+entity_id=(111111111 222222222)
 # your inwx web interface user name and password
 username=yourusername
 password=yourpassword
