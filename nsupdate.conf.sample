@@ -1,0 +1,20 @@
+#
+# required options, please specify
+#
+
+# the hostname to query via dns
+hostname=hostname.to.check.tld
+# dns entry entity ids; see README
+entity_id=(111111111)
+# your inwx web interface user name and password
+username=yourusername
+password=yourpassword
+
+#
+# optional; can be used to override standard values
+#
+
+# xml template to push to the API
+#xmlfile="nsupdatedata.xml"
+# path to an ip check web site; has to deliver the wan ip in the response body
+#site="http://myip.ch"

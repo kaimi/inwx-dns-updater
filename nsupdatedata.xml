@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<methodCall>
+   <methodName>nameserver.updateRecord</methodName>
+   <params>
+      <param>
+         <value>
+            <struct>
+               <member>
+                  <name>user</name>
+                  <value>
+                     <string>%user%</string>
+                  </value>
+               </member>
+               <member>
+                  <name>pass</name>
+                  <value>
+                     <string>%pass%</string>
+                  </value>
+               </member>
+               <member>
+                  <name>id</name>
+                  <value>
+                     <int>%ns_ent_id%</int>
+                  </value>
+               </member>
+               <member>
+                  <name>content</name>
+                  <value>
+                     <string>%wan_ip%</string>
+                  </value>
+               </member>
+            </struct>
+         </value>
+      </param>
+   </params>
+</methodCall>
