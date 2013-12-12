@@ -11,7 +11,7 @@ do
       configfile=$OPTARG
       ;;
     \?)
-      echo "ERROR: invalid option -$OPTARG" >&2
+      echo "ERROR: invalid option -$OPTARG." >&2
       exit 1
       ;;
     :)
@@ -23,13 +23,23 @@ done
 
 if [ ! -f $configfile ]
 then
-  echo "ERROR: config file '$configfile' not found" >&2
+  echo "ERROR: config file '$configfile' not found." >&2
   exit 1
 fi
 source $configfile
 
-ns_ip=$(dig +short $hostname @ns.inwx.de)
-wan_ip=$(curl -s www.myip.ch | grep -Po '(\d+\.){3}\d+')
+ns_ip=$(dig +short $hostname @ns.inwx.de 2>/dev/null)
+if [ $? -ne 0 ]
+then
+  echo "ERROR: could not retrieve DNS entry for ${hostname} from ns.inwx.de." >&2
+  exit 1
+fi
+wan_ip=$(curl -sf ${site} | grep -Po '(\d+\.){3}\d+')
+if [ $? -ne 0 ]
+then
+  echo "ERROR: could not retrieve current WAN address from ${site}." >&2
+  exit 1
+fi
 date=$(date "+%F %T")
 
 if [ ! "${ns_ip}" == "${wan_ip}" ]
@@ -42,7 +52,7 @@ then
   retcode=$?
   if [ $retcode -ne 0 ]
   then
-    echo "ERROR: failed to call xmlrpc API, curl return code: ${retcode}" >&2
+    echo "ERROR: failed to call xmlrpc API, curl return code: ${retcode}." >&2
   else
     echo "${date} – ${hostname} → ${wan_ip}"
   fi
