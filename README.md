@@ -1,4 +1,4 @@
-InternNetworkX DNS updater
+InterNetworkX DNS updater
 ==========================
 
 Shell script for updating DNS entries via InterNetworkX’ XMLRPC API (dynamic 
