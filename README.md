@@ -34,8 +34,8 @@ config file variables
   response body, _not_ through fancy javasrcipt.</dd>
 </dl>
 
-The entity ID can be determined by editing a DNS entry and mousing over the 
-„save“ butten. It’s in the URL (see image):
+The entity ID can be determined by editing a DNS entry via the web UI and 
+mousing over the „save“ button. It’s in the URL (see image):
 
 ![determining the entity ID](http://i.imgur.com/NJGQVYe.png)
 
