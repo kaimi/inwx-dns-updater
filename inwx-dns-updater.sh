@@ -40,7 +40,6 @@ then
   echo "ERROR: could not retrieve current WAN address from ${site}." >&2
   exit 1
 fi
-date=$(date "+%F %T")
 
 if [ ! "${ns_ip}" == "${wan_ip}" ]
 then
@@ -54,6 +53,6 @@ then
   then
     echo "ERROR: failed to call xmlrpc API, curl return code: ${retcode}." >&2
   else
-    echo "${date} – ${hostname} → ${wan_ip}"
+    echo "$(date "+%F %T") – ${hostname} → ${wan_ip}"
   fi
 fi
