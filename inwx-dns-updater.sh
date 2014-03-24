@@ -34,7 +34,7 @@ then
   echo "ERROR: could not retrieve DNS entry for ${hostname} from ns.inwx.de." >&2
   exit 1
 fi
-wan_ip=$(curl -sf ${site} | grep -Po '(\d+\.){3}\d+')
+wan_ip=$(curl -4sf ${site} | grep -Po '(\d+\.){3}\d+')
 if [ $? -ne 0 ]
 then
   echo "ERROR: could not retrieve current WAN address from ${site}." >&2
@@ -46,7 +46,7 @@ then
   elements=${#entity_id[@]}
   for (( i=0;i<$elements;i++))
   do
-    curl -sfo /dev/null -d "$(cat ${xmlfile} | sed "s/%user%/${username}/g;s/%pass%/${password}/g;s/%ns_ent_id%/${entity_id[${i}]}/g;s/%wan_ip%/${wan_ip}/g")" https://api.domrobot.com/xmlrpc/
+    curl -4sfo /dev/null -d "$(cat ${xmlfile} | sed "s/%user%/${username}/g;s/%pass%/${password}/g;s/%ns_ent_id%/${entity_id[${i}]}/g;s/%wan_ip%/${wan_ip}/g")" https://api.domrobot.com/xmlrpc/
   done
   retcode=$?
   if [ $retcode -ne 0 ]
